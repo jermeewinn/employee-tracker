@@ -2,9 +2,6 @@ const mysql = require('mysql2');
 const db = require('./db/connection');
 const inquirer = require('inquirer');
 const table = require('console.table');
-const { test } = require('media-typer');
-const { dodgerblue } = require('color-name');
-const { ExternalEditor } = require('external-editor');
 
 //Start server after DB connection.
 db.connect(err => {
