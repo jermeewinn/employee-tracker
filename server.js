@@ -52,15 +52,15 @@ function init() {
 
             case 'Add An Employee':
                 //Insert router.post call to router/employeeRoutes.js for New Employee.
-
+                addNewEmployee();
                 break;
 
             case 'Update An Employee Role':
                 //Insert router.put call to router/employeeRoutes.js to update existing employee role.
-
+                updateEmployee();
                 break;
             case 'Exit':
-                //Insert js logic to leave the inquirer.prompt.
+                process.exit();
         }
     })
 }
@@ -159,9 +159,46 @@ function addNewRole() {
     });
 };
 //Call for Add An Employee.
+function addNewEmployee() {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'first_name',
+            message: "What is the new employee's first name?"
+        },
+        {
+            type: 'input',
+            name: 'last_name',
+            message: "What is the new employee's last name?"
+        },
+        {
+            type: 'input',
+            name: 'role_id',
+            message: "What is the new employee's role ID?"
+        },
+        {
+            type: 'input',
+            name: 'manager_id',
+            message: "Who is the new employee's manager ID?"
+        }
+    ]).then(({ first_name, last_name, role_id, manager_id }) => {
+        const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id)
+                    VALUES (?,?,?,?)`;
+        const params = [first_name, last_name, role_id, manager_id];
+        db.query(sql, params, err => {
+            if (err) {
+                throw err
+            } else {
+                getAllEmployees();
+            }
+        });
 
+    init();
+    });
+};
 //Call for Update An Employee Role.
+// function updateEmployee {
 
-//Call for Exit.
+// }
 
 init();
