@@ -40,7 +40,7 @@ function init() {
 
             case 'View All Employees':
                 //Insert router.get call to routes/employeeRoutes.js All Employees.
-
+                getAllEmployees();
                 break;
 
             case 'Add A Department':
@@ -94,16 +94,25 @@ function getAllRoles() {
     init()
 };
 //Call for View All Employees.
-
+function getAllEmployees() {
+    const sql = `SELECT * FROM employees`;
+    db.query(sql, (err, res) => {
+        if (err) {
+            throw err;
+        } else {
+            console.log("\n");
+            console.table(res);
+        }
+    });
+    init()
+};
 //Call for Add A Department.
 function addNewDepartment() {
-    return inquirer.prompt(
-        {
+    return inquirer.prompt({
         type: 'input',
         name: 'addNewDepartment',
         message: 'What department would you like to add?'
-        }
-        ).then(({ addNewDepartment }) => {
+        }).then(({ addNewDepartment }) => {
         const sql = `INSERT INTO departments (dept_name)
                     VALUES (?)`;
         const params = [addNewDepartment]
