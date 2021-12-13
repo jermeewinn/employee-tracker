@@ -3,6 +3,7 @@ const db = require('./db/connection');
 const inquirer = require('inquirer');
 const table = require('console.table');
 const { test } = require('media-typer');
+const { dodgerblue } = require('color-name');
 
 //Start server after DB connection.
 db.connect(err => {
@@ -43,7 +44,7 @@ function init() {
 
             case 'Add A Department':
                 //Insert router.post call to routes/departmentRoutes.js for New Department.
-
+                addNewDepartment();
                 break;
 
             case 'Add A Role':
@@ -72,10 +73,42 @@ function getAllDepartments() {
         if (err) {
             throw err;
         } else {
-        console.table(res);
+            console.table(res);
         }
-    }) 
+    }); 
     init()
 };
+//Call for View All Roles.
+
+//Call for View All Employees.
+
+//Call for Add A Department.
+function addNewDepartment() {
+    return inquirer.prompt({
+        type: 'input',
+        name: 'addNewDepartment',
+        message: 'What department would you like to add?'
+    }).then(({ addNewDepartment }) => {
+        const sql = `INSERT INTO departments (dept_name)
+                    VALUES (?)`;
+        const params = [addNewDepartment]
+        db.query(sql, params, err => {
+            if (err) {
+                throw err;
+            } else {
+                getAllDepartments();
+            };
+        });
+
+    init()
+    });
+};
+//Call for Add A Role.
+
+//Call for Add An Employee.
+
+//Call for Update An Employee Role.
+
+//Call for Exit.
 
 init();
