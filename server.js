@@ -31,32 +31,26 @@ function init() {
                 break;
 
             case 'View All Roles':
-                //Insert router.get call to routes/roleRoutes.js for All Roles.
                 getAllRoles();
                 break;
 
             case 'View All Employees':
-                //Insert router.get call to routes/employeeRoutes.js All Employees.
                 getAllEmployees();
                 break;
 
             case 'Add A Department':
-                //Insert router.post call to routes/departmentRoutes.js for New Department.
                 addNewDepartment();
                 break;
 
             case 'Add A Role':
-                //Insert router.post call to router/roleRoutes.js for New Role.
                 addNewRole();
                 break;
 
             case 'Add An Employee':
-                //Insert router.post call to router/employeeRoutes.js for New Employee.
                 addNewEmployee();
                 break;
 
             case 'Update An Employee Role':
-                //Insert router.put call to router/employeeRoutes.js to update existing employee role.
                 updateEmployee();
                 break;
             case 'Exit':
