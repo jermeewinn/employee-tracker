@@ -50,14 +50,14 @@ function init() {
                 addNewEmployee();
                 break;
 
-            case 'Update An Employee Role':
-                updateEmployee();
-                break;
+            // case 'Update An Employee Role':
+            //     updateEmployeeRole();
+            //     break;
             case 'Exit':
                 process.exit();
-        }
-    })
-}
+        };
+    });
+};
 //Call for View All Departments.
 function getAllDepartments() {
     const sql = `SELECT * FROM departments`;
@@ -191,8 +191,30 @@ function addNewEmployee() {
     });
 };
 //Call for Update An Employee Role.
-// function updateEmployee {
-
-// }
+// function updateEmployeeRole() {
+//     return inquirer.prompt([
+//         {
+//             type: 'input',
+//             name: 'chooseEmployee',
+//             message: 'Choose an employee to update their role'
+//         },
+//         {
+//             type: 'input',
+//             name: 'updateRole',
+//             message: 'What role do you want to update this employee to?'
+//         }
+//     ]).then(({ chooseEmployee, updateRole }) => {
+//         const sql = `UPDATE employees SET role_id = ? WHERE id = ?`;
+//         const params = [chooseEmployee, updateRole];
+//         db.query(sql, params, err => {
+//             if (err) {
+//                 throw err
+//             } else {
+//                 getAllEmployees();
+//             }
+//         });
+//     init();
+//     });
+// };
 
 init();
