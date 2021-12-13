@@ -16,7 +16,7 @@ This project demonstrates how to query and add to an employee database using SQL
 * mysql source db/schema.sql;
 * mysql source db/seeds.sql;
 * mysql exit;
-* npm start
+* $npm start
 
 ## Languages Used:
 * Javascript
