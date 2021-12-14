@@ -18,6 +18,9 @@ This project demonstrates how to query and add to an employee database using SQL
 * mysql exit;
 * $npm start
 
+## Link to Screencastify Video:
+https://watch.screencastify.com/v/anIeYQnrE2kCtGdkPCHe
+
 ## Languages Used:
 * Javascript
 * MySQL
