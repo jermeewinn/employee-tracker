@@ -21,7 +21,7 @@ function init() {
             'Add A Department',
             'Add A Role',
             'Add An Employee',
-            'Update An Employee Role',
+            // 'Update An Employee Role',
             'Exit'
         ]
     }]).then(({ menu }) => {
@@ -68,11 +68,12 @@ function getAllDepartments() {
             console.log("\n");
             console.table(res);
         }
+        init()
     }); 
-    init()
+    
 };
 //Call for View All Roles.
-function getAllRoles() {
+async function getAllRoles() {
     const sql = `SELECT * FROM roles`;
     db.query(sql, (err, res) => {
         if (err) {
@@ -81,11 +82,12 @@ function getAllRoles() {
             console.log("\n");
             console.table(res);
         }
+        init()
     });
-    init()
+    
 };
 //Call for View All Employees.
-function getAllEmployees() {
+async function getAllEmployees() {
     const sql = `SELECT * FROM employees`;
     db.query(sql, (err, res) => {
         if (err) {
@@ -94,8 +96,9 @@ function getAllEmployees() {
             console.log("\n");
             console.table(res);
         }
+        init()
     });
-    init()
+    
 };
 //Call for Add A Department.
 function addNewDepartment() {
@@ -113,9 +116,10 @@ function addNewDepartment() {
             } else {
                 getAllDepartments();
             };
+            init()
         });
 
-    init()
+    
     });
 };
 //Call for Add A Role.
@@ -141,15 +145,17 @@ function addNewRole() {
         const sql = `INSERT INTO roles (title, salary, department_id)
                     VALUES (?,?,?)`;
         const params = [title, salary, department_id];
-        db.query(sql, params, err => {
+        db.query(sql, params, async (err) => {
             if (err) {
                 throw err;
+                init();
             } else {
-                getAllRoles();
+                await getAllRoles();
             };
+            // init()
         });
 
-    init()
+    
     });
 };
 //Call for Add An Employee.
@@ -179,15 +185,17 @@ function addNewEmployee() {
         const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id)
                     VALUES (?,?,?,?)`;
         const params = [first_name, last_name, role_id, manager_id];
-        db.query(sql, params, err => {
+        db.query(sql, params, async(err) => {
             if (err) {
-                throw err
+                throw err;
+                init();
             } else {
-                getAllEmployees();
+                await getAllEmployees();
             }
+            
         });
 
-    init();
+    
     });
 };
 //Call for Update An Employee Role.
