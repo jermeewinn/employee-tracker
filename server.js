@@ -102,7 +102,7 @@ async function getAllEmployees() {
 };
 //Call for Add A Department.
 function addNewDepartment() {
-    return inquirer.prompt({
+    inquirer.prompt({
         type: 'input',
         name: 'addNewDepartment',
         message: 'What department would you like to add?'
@@ -123,8 +123,8 @@ function addNewDepartment() {
     });
 };
 //Call for Add A Role.
-function addNewRole() {
-    return inquirer.prompt([
+async function addNewRole() {
+    inquirer.prompt([
         {
             type: 'input',
             name: 'title',
@@ -148,7 +148,6 @@ function addNewRole() {
         db.query(sql, params, async (err) => {
             if (err) {
                 throw err;
-                init();
             } else {
                 await getAllRoles();
             };
@@ -159,8 +158,8 @@ function addNewRole() {
     });
 };
 //Call for Add An Employee.
-function addNewEmployee() {
-    return inquirer.prompt([
+async function addNewEmployee() {
+    inquirer.prompt([
         {
             type: 'input',
             name: 'first_name',
@@ -188,7 +187,6 @@ function addNewEmployee() {
         db.query(sql, params, async(err) => {
             if (err) {
                 throw err;
-                init();
             } else {
                 await getAllEmployees();
             }
