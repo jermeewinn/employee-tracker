@@ -10,7 +10,7 @@ db.connect(err => {
 });
 
 function init() {
-    return inquirer.prompt([{
+    inquirer.prompt([{
         type: 'list',
         name: 'menu',
         message: 'What information would you like to see?',
@@ -87,7 +87,7 @@ async function getAllRoles() {
     
 };
 //Call for View All Employees.
-async function getAllEmployees() {
+function getAllEmployees() {
     const sql = `SELECT * FROM employees`;
     db.query(sql, (err, res) => {
         if (err) {
@@ -116,7 +116,6 @@ function addNewDepartment() {
             } else {
                 getAllDepartments();
             };
-            init()
         });
 
     
@@ -145,16 +144,13 @@ async function addNewRole() {
         const sql = `INSERT INTO roles (title, salary, department_id)
                     VALUES (?,?,?)`;
         const params = [title, salary, department_id];
-        db.query(sql, params, async (err) => {
+        db.query(sql, params, async(err) => {
             if (err) {
                 throw err;
             } else {
                 await getAllRoles();
             };
-            // init()
         });
-
-    
     });
 };
 //Call for Add An Employee.
