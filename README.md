@@ -19,7 +19,7 @@ This project demonstrates how to query and add to an employee database using SQL
 * $npm start
 
 ## Link to Screencastify Video:
-https://watch.screencastify.com/v/anIeYQnrE2kCtGdkPCHe
+https://watch.screencastify.com/v/2hH8QYd6KNNnNeUAsuX0
 
 ## Languages Used:
 * Javascript
