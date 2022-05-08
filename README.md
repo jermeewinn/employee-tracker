@@ -2,7 +2,7 @@
 
 ## Description:
 
-This project demonstrates how to query and add to an employee database using SQL. Queries and entries are initilized through npm inquirer, any updates to the database can be shown through the console.table command.
+Employee tracker is a web application that allows users to create, update, and delete employees from a company database. This project demonstrates how to query and add to an employee database using SQL. Queries and entries are initilized through npm inquirer, any updates to the database can be shown through the console.table command.
 
 ## Installation:
 * $git clone git@github.com:jermeewinn/employee-tracker.git 
